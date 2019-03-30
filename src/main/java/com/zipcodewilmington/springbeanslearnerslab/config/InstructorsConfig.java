@@ -2,11 +2,13 @@ package com.zipcodewilmington.springbeanslearnerslab.config;
 
 import com.zipcodewilmington.springbeanslearnerslab.models.Instructors;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Configuration
 public class InstructorsConfig<T> {
 
     List<Instructors> instructorsUSA;
@@ -36,8 +38,7 @@ public class InstructorsConfig<T> {
     @Bean(name = "instructors")
     @Primary
     public List<Instructors> instructors(){
-        instructors = new ArrayList<>();
-        return this.instructorsUSA;
+        return combineInstructors(this.instructorsUSA,this.instructorsUK);
     }
 
 }

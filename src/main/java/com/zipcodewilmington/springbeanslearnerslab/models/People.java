@@ -7,6 +7,9 @@ public abstract class People <PersonType extends Person> implements Iterable<Per
 
     List<PersonType> peopleList;
 
+    public People() {
+    }
+
     public People(List<PersonType> personType) {
         this.peopleList = personType;
     }

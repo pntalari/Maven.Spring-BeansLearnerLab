@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 
 public class Students extends People<Student> {
 
+    public Students() {
+    }
 
     public Students(List<Student> personType) {
         super(personType);

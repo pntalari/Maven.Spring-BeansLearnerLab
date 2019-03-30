@@ -8,22 +8,25 @@ import java.util.List;
 public class Classroom {
 
     private List<Instructors> instructorsList;
-    private List<Students> studentsList;
+    private Iterable<? extends Learner> studentsList;
 
-    public Classroom(List<Instructors> instructors, List<Students> students) {
+    public Classroom() {
+    }
+
+    public Classroom(List<Instructors> instructors, List<Learner> students) {
         this.instructorsList = instructors;
         this.studentsList = students;
     }
 
     private void hostLecture(Teacher teacher, double numberOfHours){
-        teacher.lecture((Iterable<? extends Learner>) studentsList,numberOfHours);
+        teacher.lecture(studentsList,numberOfHours);
     }
 
     public List<Instructors> getInstructorsList() {
         return instructorsList;
     }
 
-    public List<Students> getStudentsList() {
+    public Iterable<? extends Learner> getStudentsList() {
         return studentsList;
     }
 }

@@ -1,21 +1,24 @@
 package com.zipcodewilmington.springbeanslearnerslab.config;
 
 import com.zipcodewilmington.springbeanslearnerslab.models.Students;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class StudentConfig {
-    Students currStudents;
-    Students prevStudents;
+
 
     @Bean(name = "students")
-    private Students currentStudents(){
-        return this.currStudents;
+     Students currentStudents(){
+        return new Students();
     }
 
-    @Bean(name = "previousStuds")
-    private Students previousStudents(){
-        return this.prevStudents;
+    @Bean(name = "previousStudents")
+     Students previousStudents(){
+        return new Students();
     }
+
 }
