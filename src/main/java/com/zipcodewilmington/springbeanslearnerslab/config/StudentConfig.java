@@ -37,8 +37,7 @@ public class StudentConfig {
 
     }
 
-
-    @Bean(name = "students")
+    @Bean(name = "currentStudents")
     public Students currentStudents() {
         currentStudsList = createStudsList(currentStudNames);
         return new Students(currentStudsList);
@@ -49,6 +48,22 @@ public class StudentConfig {
 
         previousStudsList = createStudsList(previousStudNames);
         return new Students(previousStudsList);
+    }
+
+    public static List<Student> getCurrentStudsList() {
+        return currentStudsList;
+    }
+
+    public static List<String> getCurrentStudNames() {
+        return currentStudNames;
+    }
+
+    public static List<Student> getPreviousStudsList() {
+        return previousStudsList;
+    }
+
+    public static List<String> getPreviousStudNames() {
+        return previousStudNames;
     }
 
 }

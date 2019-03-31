@@ -19,7 +19,9 @@ public class Classroom {
     }
 
     private void hostLecture(Teacher teacher, double numberOfHours){
-        teacher.lecture((Iterable<? extends Learner>) studentsList,numberOfHours);
+        for(Students student : studentsList){
+            teacher.lecture(student,numberOfHours);
+        }
     }
 
     public List<Instructors> getInstructorsList() {
