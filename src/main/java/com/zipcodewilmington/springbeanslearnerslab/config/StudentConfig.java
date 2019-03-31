@@ -29,7 +29,7 @@ public class StudentConfig {
         Long index = 0L;
 
         while (iterator.hasNext()) {
-            retStudsList.add(new Student(index, studNames.get(index.intValue())));
+            retStudsList.add(new Student(index, iterator.next().toString()));
             index++;
         }
 

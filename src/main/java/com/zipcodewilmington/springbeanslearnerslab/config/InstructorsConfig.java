@@ -15,14 +15,14 @@ import java.util.List;
 @Configuration
 public class InstructorsConfig<T> {
 
-    private static List<Instructor> instructorsUSA = new ArrayList<>(4);
-    private static List<String> instructorsUSANames = new ArrayList<>(Arrays.asList("Bill","Ross","Monica","Joe"));
+    private static List<Instructor> instructorsUSA = new ArrayList<>();
+    private static List<String> instructorsUSANames = new ArrayList<>(Arrays.asList("Bill","Ross","Monica"));
 
-    private static List<Instructor> instructorsUK = new ArrayList<>(4);
-    private static List<String> instructorsUKNames = new ArrayList<>(Arrays.asList("Feeb","Chandler","Gunter","Shaun"));
+    private static List<Instructor> instructorsUK = new ArrayList<>();
+    private static List<String> instructorsUKNames = new ArrayList<>(Arrays.asList("Feeb","Chandler","Gunter"));
 
-    private static List<Instructor> instructorsZipCode = new ArrayList<>(6);
-    private static List<String> instructorsZipNames = new ArrayList<>(Arrays.asList("Nhu","Will","Dolio","Kris","Leon","Froilan"));
+    private static List<Instructor> instructorsZipCode = new ArrayList<>();
+    private static List<String> instructorsZipNames = new ArrayList<>(Arrays.asList("Nhu","Dolio","Kris","Leon","Froilan"));
 
 
     public List<Instructor> createInstructorsList(List<String> instructorNames) {
@@ -30,8 +30,9 @@ public class InstructorsConfig<T> {
         Iterator iterator = instructorNames.iterator();
         Long index = 0L;
 
-        while (iterator.hasNext()) {
-            retInstructorsList.add(new Instructor(index, instructorNames.get(index.intValue())));
+       while (iterator.hasNext())
+       {
+            retInstructorsList.add(new Instructor(index, iterator.next().toString()));
             index++;
         }
 
@@ -50,7 +51,7 @@ public class InstructorsConfig<T> {
         return new Instructors(instructorsUK);
     }
 
-    @Bean(name = "zipInstructors")
+    @Bean(name = "instructors")
     @Primary
     public Instructors instructors() {
         instructorsZipCode = createInstructorsList(instructorsZipNames);

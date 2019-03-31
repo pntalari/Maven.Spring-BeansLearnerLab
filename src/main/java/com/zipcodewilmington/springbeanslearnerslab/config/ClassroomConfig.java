@@ -14,14 +14,14 @@ import java.util.List;
 public class ClassroomConfig {
 
     @Bean("currCohort")
-    @DependsOn({"instructors","currStudents"})
+    @DependsOn({"instructors","currentStudents"})
     public Classroom currentCohort(List<Instructors> instructors, List<Students> students){
 
         return new Classroom(instructors,students);
     }
 
     @Bean("prevCohort")
-    @DependsOn({"instructors", "prevStudents"})
+    @DependsOn({"instructors", "previousStudents"})
     public Classroom previousCohort(List<Instructors> instructors,List<Students> students){
         return new Classroom(instructors,students);
 
