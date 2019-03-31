@@ -15,14 +15,6 @@ public class InstructorsConfig<T> {
     List<Instructors> instructorsUK;
     List<Instructors> instructors;
 
-    private List<Instructors> combineInstructors(List<Instructors> instructorsUSA, List<Instructors> instructorsUK){
-        this.instructors = new ArrayList<>();
-        instructors.addAll(instructorsUK);
-        instructors.addAll(instructorsUSA);
-
-        return instructors;
-    }
-
     @Bean(name = "usaInstructors")
     public List<Instructors> tcUSAInstructors(){
         instructorsUSA = new ArrayList<>();
@@ -39,6 +31,14 @@ public class InstructorsConfig<T> {
     @Primary
     public List<Instructors> instructors(){
         return combineInstructors(this.instructorsUSA,this.instructorsUK);
+    }
+
+    private List<Instructors> combineInstructors(List<Instructors> instructorsUSA, List<Instructors> instructorsUK){
+        this.instructors = new ArrayList<>(instructorsUK.size()+instructorsUSA.size());
+        instructors.addAll(instructorsUK);
+        instructors.addAll(instructorsUSA);
+
+        return instructors;
     }
 
 }
