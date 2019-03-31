@@ -7,22 +7,8 @@ import java.util.function.Consumer;
 
 public class Instructors extends People<Instructor> {
 
-    public Instructors(List<Instructor> personType) {
-        super(personType);
+    public Instructors(List<Instructor> instructors) {
+        super(instructors);
     }
 
-    @Override
-    public Iterator<Instructor> iterator() {
-        return null;
-    }
-
-    @Override
-    public void forEach(Consumer<? super Instructor> action) {
-
-    }
-
-    @Override
-    public Spliterator<Instructor> spliterator() {
-        return null;
-    }
 }

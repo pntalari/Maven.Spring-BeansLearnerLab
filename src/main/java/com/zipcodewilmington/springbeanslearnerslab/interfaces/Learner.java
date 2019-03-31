@@ -1,4 +1,4 @@
-package com.zipcodewilmington.springbeanslearnerslab.repositories;
+package com.zipcodewilmington.springbeanslearnerslab.interfaces;
 
 public interface Learner {
     public void learn(double numberOfHours);

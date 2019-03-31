@@ -1,17 +1,20 @@
 package com.zipcodewilmington.springbeanslearnerslab.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class People <PersonType extends Person> implements Iterable<PersonType> {
 
-    List<PersonType> peopleList;
+   private List<PersonType> peopleList;
 
     public People() {
+        peopleList = new ArrayList<>();
     }
 
-    public People(List<PersonType> personType) {
-        this.peopleList = personType;
+    public People(List<PersonType> personList) {
+        peopleList = new ArrayList<>();
+        this.peopleList = personList;
     }
 
     private void add(PersonType person){
@@ -27,7 +30,7 @@ public abstract class People <PersonType extends Person> implements Iterable<Per
     }
 
     private void clear(){
-        this.peopleList.removeAll(peopleList);
+        this.peopleList.clear();
     }
 
     private void addAll(){
@@ -46,5 +49,16 @@ public abstract class People <PersonType extends Person> implements Iterable<Per
         return this.peopleList;
     }
 
+    public List<PersonType> getPeopleList() {
+        return peopleList;
+    }
 
+    public void setPeopleList(List<PersonType> peopleList) {
+        this.peopleList = peopleList;
+    }
+
+    @Override
+    public Iterator<PersonType> iterator(){
+        return peopleList.iterator();
+    }
 }

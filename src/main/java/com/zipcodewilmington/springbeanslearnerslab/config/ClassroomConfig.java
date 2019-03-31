@@ -11,7 +11,8 @@ public class ClassroomConfig {
 
     @Bean("currStudents")
     public Classroom currentCohort(){
-     return new Classroom();
+
+        return new Classroom();
     }
 
     @Bean

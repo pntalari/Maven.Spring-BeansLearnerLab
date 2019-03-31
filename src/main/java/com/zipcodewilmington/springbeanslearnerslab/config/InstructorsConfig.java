@@ -11,7 +11,7 @@ import java.util.List;
 @Configuration
 public class InstructorsConfig<T> {
 
-    List<Instructors> instructorsUSA;
+    List<Instructors> instructorsUSA ;
     List<Instructors> instructorsUK;
     List<Instructors> instructors;
 

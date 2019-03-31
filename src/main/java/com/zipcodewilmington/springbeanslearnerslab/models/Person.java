@@ -7,8 +7,8 @@ import javax.persistence.Id;
 public class Person {
 
     @Id
-    final Long id;
-    String name;
+    private final Long id;
+    private String name;
 
     public Person(Long id, String name) {
         this.id = id;
