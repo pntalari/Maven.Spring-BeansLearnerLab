@@ -13,10 +13,10 @@ import java.util.Iterator;
 import java.util.List;
 
 @Configuration
-public class InstructorsConfig<T> {
+public class InstructorsConfig {
 
     private static List<Instructor> instructorsUSA = new ArrayList<>();
-    private static List<String> instructorsUSANames = new ArrayList<>(Arrays.asList("Bill","Ross","Monica"));
+    private static List<String> instructorsUSANames = new ArrayList<>(Arrays.asList("Bill","Ross","Monica","Joe","Rachael"));
 
     private static List<Instructor> instructorsUK = new ArrayList<>();
     private static List<String> instructorsUKNames = new ArrayList<>(Arrays.asList("Feeb","Chandler","Gunter"));
@@ -24,20 +24,6 @@ public class InstructorsConfig<T> {
     private static List<Instructor> instructorsZipCode = new ArrayList<>();
     private static List<String> instructorsZipNames = new ArrayList<>(Arrays.asList("Nhu","Dolio","Kris","Leon","Froilan"));
 
-
-    public List<Instructor> createInstructorsList(List<String> instructorNames) {
-        List<Instructor> retInstructorsList = new ArrayList<>(instructorNames.size());
-        Iterator iterator = instructorNames.iterator();
-        Long index = 0L;
-
-       while (iterator.hasNext())
-       {
-            retInstructorsList.add(new Instructor(index, iterator.next().toString()));
-            index++;
-        }
-
-        return retInstructorsList;
-    }
 
     @Bean(name = "usaInstructors")
     public Instructors tcUSAInstructors() {
@@ -58,5 +44,18 @@ public class InstructorsConfig<T> {
         return new Instructors(instructorsZipCode);
     }
 
+    public List<Instructor> createInstructorsList(List<String> instructorNames) {
+        List<Instructor> retInstructorsList = new ArrayList<>(instructorNames.size());
+        Iterator iterator = instructorNames.iterator();
+        Long index = 0L;
+
+        while (iterator.hasNext())
+        {
+            retInstructorsList.add(new Instructor(index, iterator.next().toString()));
+            index++;
+        }
+
+        return retInstructorsList;
+    }
 
 }

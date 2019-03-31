@@ -1,4 +1,4 @@
-package com.zipcodewilmington.springbeanslearnerslab.configTests;
+package com.zipcodewilmington.springbeanslearnerslab.config;
 
 import com.zipcodewilmington.springbeanslearnerslab.config.StudentConfig;
 import com.zipcodewilmington.springbeanslearnerslab.models.Student;
