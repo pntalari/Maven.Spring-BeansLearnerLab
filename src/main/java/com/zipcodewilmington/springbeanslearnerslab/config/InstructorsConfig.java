@@ -1,44 +1,61 @@
 package com.zipcodewilmington.springbeanslearnerslab.config;
 
+import com.zipcodewilmington.springbeanslearnerslab.models.Instructor;
 import com.zipcodewilmington.springbeanslearnerslab.models.Instructors;
+import com.zipcodewilmington.springbeanslearnerslab.models.Student;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 @Configuration
 public class InstructorsConfig<T> {
 
-    List<Instructors> instructorsUSA ;
-    List<Instructors> instructorsUK;
-    List<Instructors> instructors;
+    private static List<Instructor> instructorsUSA = new ArrayList<>(4);
+    private static List<String> instructorsUSANames = new ArrayList<>(Arrays.asList("Bill","Ross","Monica","Joe"));
+
+    private static List<Instructor> instructorsUK = new ArrayList<>(4);
+    private static List<String> instructorsUKNames = new ArrayList<>(Arrays.asList("Feeb","Chandler","Gunter","Shaun"));
+
+    private static List<Instructor> instructorsZipCode = new ArrayList<>(6);
+    private static List<String> instructorsZipNames = new ArrayList<>(Arrays.asList("Nhu","Will","Dolio","Kris","Leon","Froilan"));
+
+
+    public List<Instructor> createInstructorsList(List<String> instructorNames) {
+        List<Instructor> retInstructorsList = new ArrayList<>(instructorNames.size());
+        Iterator iterator = instructorNames.iterator();
+        Long index = 0L;
+
+        while (iterator.hasNext()) {
+            retInstructorsList.add(new Instructor(index, instructorNames.get(index.intValue())));
+            index++;
+        }
+
+        return retInstructorsList;
+    }
 
     @Bean(name = "usaInstructors")
-    public List<Instructors> tcUSAInstructors(){
-        instructorsUSA = new ArrayList<>();
-        return this.instructorsUSA;
+    public Instructors tcUSAInstructors() {
+        instructorsUSA = createInstructorsList(instructorsUSANames);
+        return new Instructors(instructorsUSA);
     }
 
     @Bean(name = "ukInstructors")
-    public List<Instructors> tcUKInstructors(){
-        instructorsUK = new ArrayList<>();
-        return this.instructorsUK;
+    public Instructors tcUKInstructors() {
+        instructorsUK = createInstructorsList(instructorsUKNames);
+        return new Instructors(instructorsUK);
     }
 
-    @Bean(name = "instructors")
+    @Bean(name = "zipInstructors")
     @Primary
-    public List<Instructors> instructors(){
-        return combineInstructors(this.instructorsUSA,this.instructorsUK);
+    public Instructors instructors() {
+        instructorsZipCode = createInstructorsList(instructorsZipNames);
+        return new Instructors(instructorsZipCode);
     }
 
-    private List<Instructors> combineInstructors(List<Instructors> instructorsUSA, List<Instructors> instructorsUK){
-        this.instructors = new ArrayList<>(instructorsUK.size()+instructorsUSA.size());
-        instructors.addAll(instructorsUK);
-        instructors.addAll(instructorsUSA);
-
-        return instructors;
-    }
 
 }

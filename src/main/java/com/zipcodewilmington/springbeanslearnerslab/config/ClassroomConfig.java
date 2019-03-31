@@ -1,24 +1,29 @@
 package com.zipcodewilmington.springbeanslearnerslab.config;
 
 import com.zipcodewilmington.springbeanslearnerslab.models.Classroom;
+import com.zipcodewilmington.springbeanslearnerslab.models.Instructors;
+import com.zipcodewilmington.springbeanslearnerslab.models.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import java.util.List;
+
 @Configuration
 public class ClassroomConfig {
 
-    @Bean("currStudents")
-    public Classroom currentCohort(){
+    @Bean("currCohort")
+    @DependsOn({"instructors","currStudents"})
+    public Classroom currentCohort(List<Instructors> instructors, List<Students> students){
 
-        return new Classroom();
+        return new Classroom(instructors,students);
     }
 
-    @Bean
-    @DependsOn({"instructors", "students"})
-    public Classroom previousCohort(){
-        return new Classroom();
+    @Bean("prevCohort")
+    @DependsOn({"instructors", "prevStudents"})
+    public Classroom previousCohort(List<Instructors> instructors,List<Students> students){
+        return new Classroom(instructors,students);
 
     }
 }
