@@ -23,12 +23,14 @@ public class AlumniTest {
 
     @Test
     public void executeBootCampTest() {
-        int numberOfInstructors = instructors.getPeopleList().size();
-        int numberOfStudents = alumni.getAlumStuds().getPeopleList().size();
-        int hoursToTeachEachStudent = 1200;
+
+        int hoursToTeachEachStudent = 7200;
+        int hoursEachStudLearned = 1200;
 
         Students students = alumni.getAlumStuds();
 
         instructors.forEach(instructor -> Assert.assertEquals(hoursToTeachEachStudent,instructor.getNumberOfHoursTought(),0));
+
+        students.forEach(student -> Assert.assertEquals(hoursEachStudLearned,student.getNumOfHours(),0));
     }
 }

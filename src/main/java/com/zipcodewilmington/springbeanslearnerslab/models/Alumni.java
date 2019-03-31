@@ -14,12 +14,17 @@ public class Alumni {
     @Autowired @Qualifier("instructors")
     Instructors instructors;
 
-    int totalNumberOfHours = 1200;
+    int numberOfHoursToEachStud = 1200;
 
     @PostConstruct
     public void executeBootCamp(){
-        double numberOfHoursToTeach = totalNumberOfHours * alumStuds.getPeopleList().size();
-        double numberOfHoursPerInstructor = numberOfHoursToTeach / alumStuds.getPeopleList().size();
+        int numberOfInstructors = instructors.getPeopleList().size();
+        int numberOfStudents = alumStuds.getPeopleList().size();
+
+        double numberOfHoursToTeach = numberOfHoursToEachStud * numberOfStudents;
+        double numberOfHoursPerInstructor = numberOfHoursToTeach / numberOfInstructors;
+
+
         instructors.forEach(instructor -> instructor.lecture(alumStuds,numberOfHoursPerInstructor));
     }
 

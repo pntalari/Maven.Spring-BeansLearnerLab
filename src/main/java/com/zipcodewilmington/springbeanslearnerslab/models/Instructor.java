@@ -22,12 +22,12 @@ public class Instructor extends Person implements Teacher {
 
     @Override
     public void lecture(Iterable<? extends Learner> learners, double numberOfHours) {
-        numberOfHoursTought +=numberOfHours;
+        numberOfHoursTought += numberOfHours;
 
-         Long learnersCount = StreamSupport.stream(learners.spliterator(),false).count();
-         double hrsPerLearner = numberOfHoursTought / learnersCount;
+        Long learnersCount = StreamSupport.stream(learners.spliterator(), false).count();
+        double hrsPerLearner = numberOfHours / learnersCount;
 
-         learners.forEach(learner -> learner.learn(hrsPerLearner));
+        learners.forEach(learner -> learner.learn(hrsPerLearner));
 
     }
 
